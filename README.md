@@ -75,21 +75,17 @@ It brings together smart tools like **Notes**, **To-Do List**, **Timer**, and **
 - Add them to the configuration section of your project (e.g., in `config.js` or `script.js`)
 
 ---
-## 🧩 PR Level Scoring
 
-PR (Pull Request) levels determine contributor scores:  
-- 🥉 **Level 1 → 2 points**  
-- 🥈 **Level 2 → 5 points**  
-- 🥇 **Level 3 → 11 points**
-
----
-
-## 🧑‍💻 Author
-
-**👩‍💻 Dimpal Yadav**  
-🎓 *Third-Year Computer Science Student*  
-💡 Passionate about web development, UI/UX design, and AI-powered learning tools.  
-🌐 [LinkedIn Profile](https://www.linkedin.com/in/dimpal-yadav-649982314/)  
+<div style="text-align: center; font-family: Arial, sans-serif; line-height: 1.6;">
+  <h2>🧑‍💻 Author</h2>
+  <p>
+    <strong>👩‍💻 Name:</strong> Dimpal Yadav<br>
+    <strong>🎓 Course:</strong> Third-Year Computer Science Student<br>
+    <strong>💡 Interests:</strong> Passionate about Web Development, UI/UX Design, and AI-powered Learning Tools<br>
+    <strong>🌐 LinkedIn:</strong> <a href="https://www.linkedin.com/in/dimpal-yadav-649982314/" target="_blank">Visit My LinkedIn</a><br>
+    <strong>📧 Email:</strong> <a href="mailto:dimpal.yadav2912@gmail.com">dimpal.yadav2912@gmail.com</a>
+  </p>
+</div>
 
 ---
 
