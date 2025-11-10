@@ -20,22 +20,16 @@ jobs:
             const issueNumber = context.payload.issue.number;
             const issueAuthor = context.payload.issue.user.login;
 
-            const message = `
-Hi @${issueAuthor} 👋
-
-Thanks for opening this issue!  
-A maintainer will review it shortly. Please make sure you have:
-
-- Clearly described the problem or feature request  
-- Added screenshots or logs (if helpful)  
-- Followed the issue template  
-
-If this issue relates to a feature, feel free to suggest improvements or reference relevant files.
-
-📘 See our [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
-
-Thanks for helping improve **EduMind AI Study Assistant**! 🚀
-`;
+            const message = 
+              "Hi @" + issueAuthor + " 👋\n\n" +
+              "Thanks for opening this issue!\n" +
+              "A maintainer will review it shortly. Please make sure you have:\n\n" +
+              "- Clearly described the problem or feature request\n" +
+              "- Added screenshots or logs (if helpful)\n" +
+              "- Followed the issue template\n\n" +
+              "If this issue relates to a feature, feel free to suggest improvements or reference relevant files.\n\n" +
+              "📘 See our [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.\n\n" +
+              "Thanks for helping improve **EduMind AI Study Assistant**! 🚀";
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
