@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
+
     function initializeHistoryPage(user) {
         // Update user avatar
         const userAvatar = document.getElementById('userAvatar');

@@ -65,6 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
+
     // Initialize user data
     function initializeUserData() {
         // Set user name

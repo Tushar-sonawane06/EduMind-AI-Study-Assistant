@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // In a real application, auth.onAuthStateChanged would be used to:
     // a) Check if user is logged in. If not, redirect to login.html.
     // b) Get the current user's data (e.g., user.displayName).
-    
+
     // Placeholder for getting user data
     const userName = "Alex"; // Replace with actual Firebase user data
     const welcomeMessageElement = document.getElementById('welcome-message');
-    
+
     if (welcomeMessageElement) {
         welcomeMessageElement.innerHTML = `Welcome, <span style="color: #9c27b0;">${userName}!</span> 👋`;
     }
@@ -29,18 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
         taskCompletion: 75, // Percentage
         pomodoroCounts: [5, 8, 4, 10, 6, 7, 9] // Sessions per day
     };
-    // Initialize the app when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Check initial auth state
-    const user = auth.currentUser;
-    if (user) {
-        showDashboard();
-    } else {
-        showLoginPage();
-    }
     
-    console.log('EduMind AI Study Assistant initialized');
-});
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
+
+    // Initialize the app when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // Check initial auth state
+        const user = auth.currentUser;
+        if (user) {
+            showDashboard();
+        } else {
+            showLoginPage();
+        }
+
+        console.log('EduMind AI Study Assistant initialized');
+    });
 
     // --- Performance Chart (Line Chart) ---
     const performanceCtx = document.getElementById('performanceChart');
@@ -109,233 +115,233 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // Authentication Management
-const loginPage = document.getElementById('login');
-const signupPage = document.getElementById('signup');
-const dashboardPage = document.getElementById('dashboard');
-const loginForm = document.getElementById('login-form');
-const signupForm = document.getElementById('signup-form');
-const goToSignup = document.getElementById('go-to-signup');
-const goToLogin = document.getElementById('go-to-login');
-const forgotPassword = document.getElementById('forgot-password');
-const forgotPasswordModal = document.getElementById('forgot-password-modal');
-const closeForgotModal = document.getElementById('close-forgot-modal');
-const resetPasswordBtn = document.getElementById('reset-password-btn');
-const demoAccounts = document.querySelectorAll('.demo-account');
+    const loginPage = document.getElementById('login');
+    const signupPage = document.getElementById('signup');
+    const dashboardPage = document.getElementById('dashboard');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const goToSignup = document.getElementById('go-to-signup');
+    const goToLogin = document.getElementById('go-to-login');
+    const forgotPassword = document.getElementById('forgot-password');
+    const forgotPasswordModal = document.getElementById('forgot-password-modal');
+    const closeForgotModal = document.getElementById('close-forgot-modal');
+    const resetPasswordBtn = document.getElementById('reset-password-btn');
+    const demoAccounts = document.querySelectorAll('.demo-account');
 
-// Show login page
-function showLoginPage() {
-    hideAllPages();
-    loginPage.classList.add('active-page');
-}
+    // Show login page
+    function showLoginPage() {
+        hideAllPages();
+        loginPage.classList.add('active-page');
+    }
 
-// Show signup page
-function showSignupPage() {
-    hideAllPages();
-    signupPage.classList.add('active-page');
-}
+    // Show signup page
+    function showSignupPage() {
+        hideAllPages();
+        signupPage.classList.add('active-page');
+    }
 
-// Show dashboard (main app)
-function showDashboard() {
-    hideAllPages();
-    dashboardPage.classList.add('active-page');
-}
+    // Show dashboard (main app)
+    function showDashboard() {
+        hideAllPages();
+        dashboardPage.classList.add('active-page');
+    }
 
-// Hide all pages
-function hideAllPages() {
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active-page');
+    // Hide all pages
+    function hideAllPages() {
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active-page');
+        });
+    }
+
+    // Event Listeners for navigation
+    goToSignup.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSignupPage();
     });
-}
 
-// Event Listeners for navigation
-goToSignup.addEventListener('click', (e) => {
-    e.preventDefault();
-    showSignupPage();
-});
+    goToLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        showLoginPage();
+    });
 
-goToLogin.addEventListener('click', (e) => {
-    e.preventDefault();
-    showLoginPage();
-});
+    // Login form submission
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-// Login form submission
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    
-    loginUser(email, password);
-});
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
 
-// Signup form submission
-signupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
-    const confirmPassword = document.getElementById('signup-confirm-password').value;
-    
-    // Validate passwords match
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
-    
-    // Validate password length
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long!');
-        return;
-    }
-    
-    registerUser(name, email, password);
-});
-
-// Demo account login
-demoAccounts.forEach(account => {
-    account.addEventListener('click', () => {
-        const email = account.getAttribute('data-email');
-        const password = account.getAttribute('data-password');
-        
-        document.getElementById('login-email').value = email;
-        document.getElementById('login-password').value = password;
-        
         loginUser(email, password);
     });
-});
 
-// Forgot password functionality
-forgotPassword.addEventListener('click', (e) => {
-    e.preventDefault();
-    forgotPasswordModal.classList.remove('hidden');
-});
+    // Signup form submission
+    signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-closeForgotModal.addEventListener('click', () => {
-    forgotPasswordModal.classList.add('hidden');
-});
+        const name = document.getElementById('signup-name').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+        const confirmPassword = document.getElementById('signup-confirm-password').value;
 
-resetPasswordBtn.addEventListener('click', () => {
-    const email = document.getElementById('reset-email').value;
-    
-    if (!email) {
-        alert('Please enter your email address');
-        return;
-    }
-    
-    auth.sendPasswordResetEmail(email)
-        .then(() => {
-            alert('Password reset email sent! Check your inbox.');
-            forgotPasswordModal.classList.add('hidden');
-        })
-        .catch(error => {
-            console.error('Password reset error:', error);
-            alert('Error sending reset email: ' + error.message);
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+
+        // Validate password length
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long!');
+            return;
+        }
+
+        registerUser(name, email, password);
+    });
+
+    // Demo account login
+    demoAccounts.forEach(account => {
+        account.addEventListener('click', () => {
+            const email = account.getAttribute('data-email');
+            const password = account.getAttribute('data-password');
+
+            document.getElementById('login-email').value = email;
+            document.getElementById('login-password').value = password;
+
+            loginUser(email, password);
         });
-});
+    });
 
-// Login user with Firebase
-function loginUser(email, password) {
-    const loginBtn = document.getElementById('login-btn');
-    const loginText = document.getElementById('login-text');
-    const loginLoading = document.getElementById('login-loading');
-    
-    // Show loading state
-    loginText.classList.add('hidden');
-    loginLoading.classList.remove('hidden');
-    loginBtn.disabled = true;
-    
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Login successful - handled by auth state change
-            console.log('User logged in:', userCredential.user);
-        })
-        .catch((error) => {
-            console.error('Login error:', error);
-            alert('Login failed: ' + error.message);
-            
-            // Reset button state
-            loginText.classList.remove('hidden');
-            loginLoading.classList.add('hidden');
-            loginBtn.disabled = false;
-        });
-}
+    // Forgot password functionality
+    forgotPassword.addEventListener('click', (e) => {
+        e.preventDefault();
+        forgotPasswordModal.classList.remove('hidden');
+    });
 
-// Register new user with Firebase
-function registerUser(name, email, password) {
-    const signupBtn = document.getElementById('signup-btn');
-    const signupText = document.getElementById('signup-text');
-    const signupLoading = document.getElementById('signup-loading');
-    
-    // Show loading state
-    signupText.classList.add('hidden');
-    signupLoading.classList.remove('hidden');
-    signupBtn.disabled = true;
-    
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Update user profile
-            return userCredential.user.updateProfile({
-                displayName: name
+    closeForgotModal.addEventListener('click', () => {
+        forgotPasswordModal.classList.add('hidden');
+    });
+
+    resetPasswordBtn.addEventListener('click', () => {
+        const email = document.getElementById('reset-email').value;
+
+        if (!email) {
+            alert('Please enter your email address');
+            return;
+        }
+
+        auth.sendPasswordResetEmail(email)
+            .then(() => {
+                alert('Password reset email sent! Check your inbox.');
+                forgotPasswordModal.classList.add('hidden');
+            })
+            .catch(error => {
+                console.error('Password reset error:', error);
+                alert('Error sending reset email: ' + error.message);
             });
-        })
-        .then(() => {
-            // Create user document in Firestore
-            const user = auth.currentUser;
-            return db.collection('users').doc(user.uid).set({
-                name: name,
-                email: email,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
+    // Login user with Firebase
+    function loginUser(email, password) {
+        const loginBtn = document.getElementById('login-btn');
+        const loginText = document.getElementById('login-text');
+        const loginLoading = document.getElementById('login-loading');
+
+        // Show loading state
+        loginText.classList.add('hidden');
+        loginLoading.classList.remove('hidden');
+        loginBtn.disabled = true;
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Login successful - handled by auth state change
+                console.log('User logged in:', userCredential.user);
+            })
+            .catch((error) => {
+                console.error('Login error:', error);
+                alert('Login failed: ' + error.message);
+
+                // Reset button state
+                loginText.classList.remove('hidden');
+                loginLoading.classList.add('hidden');
+                loginBtn.disabled = false;
+            });
+    }
+
+    // Register new user with Firebase
+    function registerUser(name, email, password) {
+        const signupBtn = document.getElementById('signup-btn');
+        const signupText = document.getElementById('signup-text');
+        const signupLoading = document.getElementById('signup-loading');
+
+        // Show loading state
+        signupText.classList.add('hidden');
+        signupLoading.classList.remove('hidden');
+        signupBtn.disabled = true;
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Update user profile
+                return userCredential.user.updateProfile({
+                    displayName: name
+                });
+            })
+            .then(() => {
+                // Create user document in Firestore
+                const user = auth.currentUser;
+                return db.collection('users').doc(user.uid).set({
+                    name: name,
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            })
+            .then(() => {
+                console.log('User registered successfully');
+                // Registration successful - handled by auth state change
+            })
+            .catch((error) => {
+                console.error('Registration error:', error);
+                alert('Registration failed: ' + error.message);
+
+                // Reset button state
+                signupText.classList.remove('hidden');
+                signupLoading.classList.add('hidden');
+                signupBtn.disabled = false;
+            });
+    }
+
+    // Update the auth state change handler
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            // User is signed in
+            userName.textContent = user.displayName || 'User';
+            dashboardUsername.textContent = user.displayName || 'Student';
+            userAvatar.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'User')}&background=00bcd4&color=fff`;
+
+            // Show dashboard
+            showDashboard();
+
+            // Load user data
+            loadUserData(user.uid);
+
+            // Update last login
+            db.collection('users').doc(user.uid).update({
                 lastLogin: firebase.firestore.FieldValue.serverTimestamp()
             });
-        })
-        .then(() => {
-            console.log('User registered successfully');
-            // Registration successful - handled by auth state change
-        })
-        .catch((error) => {
-            console.error('Registration error:', error);
-            alert('Registration failed: ' + error.message);
-            
-            // Reset button state
-            signupText.classList.remove('hidden');
-            signupLoading.classList.add('hidden');
-            signupBtn.disabled = false;
-        });
-}
-
-// Update the auth state change handler
-auth.onAuthStateChanged(user => {
-    if (user) {
-        // User is signed in
-        userName.textContent = user.displayName || 'User';
-        dashboardUsername.textContent = user.displayName || 'Student';
-        userAvatar.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'User')}&background=00bcd4&color=fff`;
-        
-        // Show dashboard
-        showDashboard();
-        
-        // Load user data
-        loadUserData(user.uid);
-        
-        // Update last login
-        db.collection('users').doc(user.uid).update({
-            lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-        });
-    } else {
-        // User is signed out, show login page
-        showLoginPage();
-    }
-});
-
-// Update the logout function
-logoutBtn.addEventListener('click', () => {
-    auth.signOut().then(() => {
-        // Redirect to login page handled by auth state change
-    }).catch(error => {
-        console.error('Logout error:', error);
+        } else {
+            // User is signed out, show login page
+            showLoginPage();
+        }
     });
-});
+
+    // Update the logout function
+    logoutBtn.addEventListener('click', () => {
+        auth.signOut().then(() => {
+            // Redirect to login page handled by auth state change
+        }).catch(error => {
+            console.error('Logout error:', error);
+        });
+    });
 
     // 3. AI Chatbot Floating Trigger (Simulated)
     // In a real application, clicking the AI Chat card would toggle a floating, animated chat window.
