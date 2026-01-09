@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     initializeTimer();
 
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
+
     function initializeTimer() {
         loadSettings();
         loadStatistics();

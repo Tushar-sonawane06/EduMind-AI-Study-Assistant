@@ -1,4 +1,5 @@
 // Dashboard functionality with Firebase
+
 document.addEventListener('DOMContentLoaded', function() {
     // Check if user is authenticated
     if (typeof requireAuth === 'function') {
@@ -7,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize dashboard
     initializeDashboard();
+
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
 });
 
 async function initializeDashboard() {

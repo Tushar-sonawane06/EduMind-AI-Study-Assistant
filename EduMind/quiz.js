@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
         loadQuizHistory();
     }
 
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
+
     function setupEventListeners() {
         // Source option switching
         const sourceOptions = document.querySelectorAll('.source-option');

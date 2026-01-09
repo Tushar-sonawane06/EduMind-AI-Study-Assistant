@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
         updateStats();
         startStudyTimer();
     }
+
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
     
     function setupEventListeners() {
         // Generator option switching

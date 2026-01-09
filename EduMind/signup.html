@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body class="auth-page">
     <div class="auth-container">
-        <div class="auth-card animate-zoom-in">
+        <div data-aos="fade-right" class="auth-card animate-zoom-in">
             <div class="auth-header">
                 <a href="index.html" class="back-home">
                     <i class="fas fa-arrow-left"></i>
@@ -98,7 +100,7 @@
             </form>
         </div>
         
-        <div class="auth-decoration animate-slide-right">
+        <div data-aos="fade-left" class="auth-decoration animate-slide-right">
             <div class="decoration-item item-1"></div>
             <div class="decoration-item item-2"></div>
             <div class="decoration-item item-3"></div>
@@ -562,6 +564,12 @@
 
 <!-- Theme Switcher Script -->
 <script>
+    // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+
 // Theme Switcher Script - Add to all HTML pages
 (function() {
   const THEMES = ['blue', 'purple', 'minimal-white', 'neon', 'dark', 'ocean', 'sunset', 'forest'];

@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile menu functionality
     setupMobileMenu();
+
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
 });
 
 function initializeSettings() {

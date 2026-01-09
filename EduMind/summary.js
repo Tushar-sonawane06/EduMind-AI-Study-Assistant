@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
+    
     // Word count for text input
     const notesText = document.getElementById('notesText');
     const wordCount = document.getElementById('wordCount');

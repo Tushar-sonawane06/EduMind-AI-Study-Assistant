@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(`${type}-upload`).style.display = 'block';
         });
     });
+
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined' && typeof AOS.init === 'function') {
+        AOS.init();
+    }
     
     // File upload functionality
     const dropZone = document.getElementById('dropZone');

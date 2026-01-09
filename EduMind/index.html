@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Add these in the head section -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav data-aos="fade-down" class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <i class="fas fa-brain"></i>
@@ -48,9 +50,9 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section data-aos="fade-up" id="home" class="hero">
         <div class="hero-container">
-            <div class="hero-content">
+            <div data-aos="zoom-out" class="hero-content">
                 <h1 class="hero-title animate-fade-down">Study Smart, Not Hard</h1>
                 <p class="hero-subtitle animate-fade-up">EduMind helps you learn faster with AI-powered tools for
                     summarizing, flashcards, quizzes, and more.</p>
@@ -59,7 +61,7 @@
                     <a href="#features" class="btn secondary">Explore Features</a>
                 </div>
             </div>
-            <div class="hero-image animate-zoom-in">
+            <div data-aos="zoom-in" class="hero-image">
                 <div class="floating-card card-1">
                     <i class="fas fa-book"></i>
                     <span>Smart Notes</span>
@@ -100,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <div data-aos="fade-in" class="scroll-indicator">
             <span>Scroll Down</span>
             <i class="fas fa-chevron-down"></i>
         </div>
@@ -109,11 +111,11 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title animate-fade-down">Powerful Study Tools</h2>
-            <p class="section-subtitle animate-fade-up">Everything you need to study effectively in one place</p>
+            <h2 data-aos="fade-in" class="section-title animate-fade-down">Powerful Study Tools</h2>
+            <p data-aos="fade-in" class="section-subtitle animate-fade-up">Everything you need to study effectively in one place</p>
 
             <div class="features-grid">
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-file-upload"></i>
                     </div>
@@ -121,7 +123,7 @@
                     <p>Upload PDFs and images, save URLs, and organize all your study materials in one place.</p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-robot"></i>
                     </div>
@@ -130,7 +132,7 @@
                         concepts.</p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-layer-group"></i>
                     </div>
@@ -139,7 +141,7 @@
                         memorization.</p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-question-circle"></i>
                     </div>
@@ -148,7 +150,7 @@
                     </p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-tasks"></i>
                     </div>
@@ -156,18 +158,17 @@
                     <p>Organize your study schedule with a smart to-do list and track your completion progress.</p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-hourglass-half"></i>
                     </div>
                     <a href="pomodoro.html">
                    <h3>Pomodoro Timer</h3>
                    </a>
-
                     <p>Boost productivity with a focus timer that uses the proven Pomodoro technique.</p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-history"></i>
                     </div>
@@ -175,7 +176,7 @@
                     <p>Review your past study sessions, summaries, quizzes, and track your learning journey.</p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-comments"></i>
                     </div>
@@ -183,7 +184,7 @@
                     <p>Get instant answers to your study questions with our integrated AI chatbot.</p>
                 </div>
 
-                <div class="feature-card animate-zoom-in">
+                <div data-aos="fade-up" class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
@@ -198,7 +199,7 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-text animate-slide-left">
+                <div data-aos="fade-right" class="about-text animate-slide-left">
                     <h2 class="section-title">About EduMind</h2>
                     <p>EduMind was created to help students study more effectively using the power of artificial
                         intelligence. Our platform combines proven study techniques with cutting-edge technology to help
@@ -206,27 +207,27 @@
                     <p>Whether you're preparing for exams, learning a new subject, or just trying to stay organized,
                         EduMind provides all the tools you need in one seamless experience.</p>
                     <div class="stats">
-                        <div class="stat-item">
+                        <div data-aos="fade-in" class="stat-item">
                             <span class="stat-number">10K+</span>
                             <span class="stat-label">Students</span>
                         </div>
-                        <div class="stat-item">
+                        <div data-aos="fade-in" class="stat-item">
                             <span class="stat-number">50K+</span>
                             <span class="stat-label">Study Sessions</span>
                         </div>
-                        <div class="stat-item">
+                        <div data-aos="fade-in" class="stat-item">
                             <span class="stat-number">95%</span>
                             <span class="stat-label">Satisfaction</span>
                         </div>
                     </div>
                 </div>
-                <div class="about-image animate-slide-right">
+                <div data-aos="fade-left" class="about-image animate-slide-right">
                     <div class="image-container">
                         <div class="floating-element el-1"></div>
                         <div class="floating-element el-2"></div>
                         <div class="floating-element el-3"></div>
                         <div class="main-image">
-                            <i class="fas fa-graduation-cap"></i>
+                            <i data-aos="zoom-in" class="fas fa-graduation-cap"></i>
                         </div>
                     </div>
                 </div>
@@ -237,11 +238,11 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title animate-fade-down">Get In Touch</h2>
-            <p class="section-subtitle animate-fade-up">Have questions? We'd love to hear from you</p>
+            <h2 data-aos="fade-in" class="section-title animate-fade-down">Get In Touch</h2>
+            <p data-aos="fade-in" class="section-subtitle animate-fade-up">Have questions? We'd love to hear from you</p>
 
             <div class="contact-content">
-                <div class="contact-info animate-slide-left">
+                <div data-aos="fade-right" class="contact-info animate-slide-left">
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
@@ -271,7 +272,7 @@
                     </div>
                 </div>
 
-                <div class="contact-form animate-slide-right">
+                <div data-aos="fade-left" class="contact-form animate-slide-right">
                     <form id="contactForm">
                         <div class="form-group">
                             <input type="text" id="name" placeholder="Your Name" required>
@@ -292,12 +293,12 @@
     <!-- AI Chat Section (add above footer) -->
         <section id="ai-chat" class="ai-chat-section">
             <div class="container">
-                <h2 class="section-title">AI Doubt Solver</h2>
+                <h2 data-aos="fade-in" class="section-title">AI Doubt Solver</h2>
                 <p class="section-subtitle">Ask AI for summaries, explanations, quizzes — fast.</p>
 
                 <div class="chat-wrapper">
                     <!-- Shortcut toolbar -->
-                    <div class="ai-shortcuts" aria-label="AI chat shortcuts">
+                    <div data-aos="fade-down" class="ai-shortcuts" aria-label="AI chat shortcuts">
                         <button type="button" class="ai-shortcut" data-key="summarize"
                             title="Summarize highlighted or pasted text">✨ Summarize</button>
                         <button type="button" class="ai-shortcut" data-key="explain" title="Explain concept simply">🧠
@@ -309,7 +310,7 @@
                     </div>
 
                     <!-- Chat box -->
-                    <div class="chat-box">
+                    <div data-aos="fade-up" class="chat-box">
                         <div id="chatOutput" class="chat-output" aria-live="polite"></div>
                         <textarea id="aiInput" placeholder="Type or paste text here..."></textarea>
                         <div class="chat-actions">
@@ -324,7 +325,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div data-aos="fade-up" class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
                         <i class="fas fa-brain"></i>
@@ -366,11 +367,17 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 EduMind. All rights reserved.</p>
+                <p>&copy; <script>document.write(new Date().getFullYear());</script> EduMind. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
     <script src="auth.js"></script>
 </body>
 
