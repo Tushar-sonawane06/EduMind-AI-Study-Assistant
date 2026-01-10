@@ -1,7 +1,40 @@
 // Profile Page Functionality
+import {
+  auth,
+  db
+} from './firebase-config.js';
+
+import {
+  doc,
+  getDoc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+import { onAuthStateChanged } 
+from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize user data
-    const userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
+    let userData = {};
+let currentUid = null;
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  currentUid = user.uid;
+  const userRef = doc(db, 'users', user.uid);
+  const snap = await getDoc(userRef);
+
+  if (snap.exists()) {
+    userData = snap.data();
+    initializeUserData();
+  }
+});
+
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{"name": "Student User"}');
     
     // Set initial user data
@@ -264,7 +297,14 @@ document.addEventListener('DOMContentLoaded', function() {
         userData.interests = interests;
         
         // Save to localStorage
-        localStorage.setItem('userProfile', JSON.stringify(userData));
+         updateDoc(doc(db, 'users', currentUid), {
+  name,
+  bio,
+  education,
+  location,
+  interests
+});
+
         
         // Update UI
         document.getElementById('userName').textContent = name;
